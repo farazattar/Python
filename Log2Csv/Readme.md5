@@ -1,1 +1,38 @@
 How to extract data from a TELEPERM XP Analog Value Sequence Log and convert it to CSV format.
+
+Usage:
+  python Log2Csv.py <input_file> [-d] [-o <output_file>] [-i <interval_seconds>] [-h]
+
+Arguments:
+  <input_file>         The log file to process (e.g., Test.txt).
+
+Options:
+  -d                   Include signal descriptions in the header row.
+                       Example: "30BXY00CE901-XQ01 [GENERATOR MW]"
+                       Default (without -d): "30BXY00CE901-XQ01"
+
+  -o <output_file>     Specify the output CSV filename.
+                       Default: "output_<input_file>.csv"
+                       Example: -o mydata.csv
+
+  -i <interval>        Set the sampling interval in seconds.
+                       Default: 1
+                       Example: -i 5
+
+  -h                   Show this help message and exit.
+
+Examples:
+  python Log2Csv.py Test.txt
+      → Processes Test.txt, 1-second interval, no descriptions.
+         Output: output_Test.txt.csv
+
+  python Log2Csv.py Test.txt -d
+      → Processes Test.txt with descriptions in headers.
+         Output: output_Test.txt.csv
+
+  python Log2Csv.py Test.txt -i 5 -o data.csv
+      → Processes Test.txt, interval = 5 seconds, saves to data.csv
+
+  python Log2Csv.py -h
+      → Shows this help message
+"""
